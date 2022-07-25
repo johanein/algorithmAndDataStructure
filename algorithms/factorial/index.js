@@ -4,8 +4,15 @@ const factorialMine = (n) => {
   }
   return n * factorialMine(n - 1);
 };
+const factorial = (n) => {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorialMine(n - 1);
+};
 
 console.log(factorialMine(5));
+console.log(factorial(5)); //O(n)
 
 const factorialUsingForLoop = (n) => {
   let result = 1;
@@ -14,4 +21,4 @@ const factorialUsingForLoop = (n) => {
   }
   return result;
 };
-console.log(factorialUsingForLoop(5));
+console.log(factorialUsingForLoop(5)); //O(n)
