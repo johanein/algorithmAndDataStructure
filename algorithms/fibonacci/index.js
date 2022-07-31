@@ -36,9 +36,7 @@ const fibonacciRecursionElement = (n) => {
   if (n < 2) {
     return n;
   }
-  return (
-    fibonacciRecursionElementMine(n - 1) + fibonacciRecursionElementMine(n - 2)
-  );
+  return fibonacciRecursionElement(n - 1) + fibonacciRecursionElement(n - 2);
 };
 console.log(fibonacci(8)); // O(n)
 console.log(fibonacciRecursionElementMine(8));
