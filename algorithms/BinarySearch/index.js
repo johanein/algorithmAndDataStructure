@@ -1,7 +1,7 @@
 // Binary search only works in a sorted array
 const binarySearch = (array, searchInput) => {
   let leftIndex = 0;
-  let rightIndex = array.length;
+  let rightIndex = array.length - 1;
   while (leftIndex <= rightIndex) {
     const middleIndex = Math.floor((leftIndex + rightIndex) / 2);
     const middleElement = array[middleIndex];
