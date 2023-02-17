@@ -46,6 +46,86 @@ class LinkedList {
     this.size++;
     prev.next = node;
   };
+
+  remove = (index) => {
+    if (index < 0 || index >= this.size) {
+      return null;
+    }
+    if (index === 0) {
+      const valueDeleted = this.head.value;
+      this.head = this.head.next;
+      this.size--;
+      return valueDeleted;
+    }
+    let prevNode = this.head;
+    for (let i = 0; i < index - 1; i++) {
+      prevNode = prevNode.next;
+    }
+    const toBeRemovedNode = prevNode.next;
+    prevNode.next = toBeRemovedNode.next;
+    this.sizes--;
+    return toBeRemovedNode.value;
+  };
+
+  removeValue = (value) => {
+    if (this.isEmpty()) {
+      return null;
+    }
+    if (this.head.value === value) {
+      return this.remove(0);
+    }
+    let prev = this.head;
+    // let size = 2;
+    while (prev?.next && prev?.next?.value !== value) {
+      prev = prev?.next;
+    }
+
+    if (prev.next) {
+      const tempNode = prev.next;
+      prev.next = tempNode.next;
+      this.size--;
+      return tempNode.value;
+    }
+    return null;
+  };
+
+  insert = (value, index) => {
+    if (index < 0 || index >= this.size) {
+      return;
+    }
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      const node = new Node(value);
+      let previous = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        previous = previous.next;
+      }
+      let tempNode = previous.next;
+      previous.next = node;
+      node.next = tempNode;
+      this.size++;
+    }
+  };
+
+  search = (value) => {
+    if (this.isEmpty()) {
+      return -1;
+    } else {
+      let prev = this.head;
+      for (let i = 0; prev; i++) {
+        if (prev.value === value) {
+          return i;
+        }
+        prev = prev.next;
+      }
+      // while (prev.next && prev.value !== value) {
+
+      // }
+
+      return -1;
+    }
+  };
   print = () => {
     if (this.isEmpty()) {
       console.log("The list is empty");
@@ -70,3 +150,10 @@ list.prepend(10);
 list.append(20);
 list.prepend(30);
 list.print();
+list.insert(88, 1);
+list.print();
+console.log(list.remove(3));
+list.print();
+console.log(list.removeValue(10));
+list.print();
+console.log(list.search(20));
