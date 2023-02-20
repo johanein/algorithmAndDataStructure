@@ -126,6 +126,19 @@ class LinkedList {
       return -1;
     }
   };
+  reverse = () => {
+    if (this.size) {
+      let current = this.head;
+      let previous = null;
+      while (current) {
+        let next = current.next;
+        current.next = previous;
+        previous = current;
+        current = next;
+      }
+      this.head = previous;
+    }
+  };
   print = () => {
     if (this.isEmpty()) {
       console.log("The list is empty");
@@ -157,3 +170,5 @@ list.print();
 console.log(list.removeValue(10));
 list.print();
 console.log(list.search(20));
+list.reverse();
+list.print();
