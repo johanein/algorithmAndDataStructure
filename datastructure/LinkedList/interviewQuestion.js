@@ -1,6 +1,3 @@
-console.log("Hello, world!");
-// input: 1->2->5->3->9->8->x
-// output: 2->8->1->5->3->9->x
 class Node {
   constructor(value) {
     this.value = value;
@@ -11,6 +8,7 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
     this.size = 0;
   }
 
@@ -19,55 +17,48 @@ class LinkedList {
 
     if (this.size === 0) {
       this.head = node;
+      this.tail = node;
       this.size++;
     } else {
-      let prevNode = this.head;
-      while (prevNode.next) {
-        prevNode = prevNode.next;
-      }
-      prevNode.next = node;
+      this.tail.next = node;
+      this.tail = node;
       this.size++;
     }
   }
 
   print() {
     let prevNode = this.head;
-    while (prevNode.next) {
-      console.log(prevNode.value);
+    let linkedList = "";
+    while (prevNode) {
+      linkedList += `${prevNode.value} -> `;
       prevNode = prevNode.next;
     }
-    console.log(prevNode.value);
+    console.log(linkedList);
   }
-}
-
-function reArrange(head) {
-  let previousNode = head;
-  const evenList = new LinkedList();
-  const oddList = new LinkedList();
-  while (previousNode.next) {
-    if (previousNode.value % 2 === 0) {
-      if (evenList.head === null) {
-        evenList.head = previousNode;
+  // input: 1->2->5->3->9->8->x
+  // output: 2->8->1->5->3->9->x
+  rearrange() {
+    let prev = this.head;
+    const evenList = new LinkedList();
+    const oddList = new LinkedList();
+    while (prev) {
+      const isValueEven = prev.value % 2 === 0;
+      if (isValueEven) {
+        evenList.append(prev.value);
       } else {
-        evenList.next = previousNode;
+        oddList.append(prev.value);
       }
-    } else {
-      if (oddList.head === null) {
-        oddList.head = previousNode;
-      } else {
-        oddList.next = previousNode;
-      }
+      prev = prev.next;
     }
-    previousNode = previousNode.next;
+    evenList.tail.next = oddList.head;
+    evenList.tail = oddList.tail;
+    evenList.print();
+    // oddList.print();
   }
 
-  let prevEvenList = evenList;
-  while (prevEvenList.next) {
-    prevEvenList.next = prevEvenList;
-  }
-  prevEvenList.next = oddList.head;
-  return prevEvenList;
+  // end of class
 }
+
 const newLinkedList = new LinkedList();
 newLinkedList.append(1);
 newLinkedList.append(2);
@@ -76,4 +67,4 @@ newLinkedList.append(3);
 newLinkedList.append(9);
 newLinkedList.append(8);
 newLinkedList.print();
-reArrange(newLinkedList.head).print();
+newLinkedList.rearrange();
