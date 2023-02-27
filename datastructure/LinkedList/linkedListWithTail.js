@@ -57,6 +57,7 @@ class LinkedList {
         this.head = this.head.next;
       }
       this.size--;
+      return this.head.value;
     }
   }
 
@@ -76,13 +77,15 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
-list.prepend(2);
-list.prepend(1);
-list.append(3);
-list.prepend(4);
-list.removeFromFront();
-list.append(1);
-list.removeFromEnd();
-list.print();
-console.log(list.size);
+// const list = new LinkedList();
+// list.prepend(2);
+// list.prepend(1);
+// list.append(3);
+// list.prepend(4);
+// list.removeFromFront();
+// list.append(1);
+// list.removeFromEnd();
+// list.print();
+// console.log(list.size);
+
+module.exports = LinkedList;
