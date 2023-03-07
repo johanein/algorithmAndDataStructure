@@ -17,8 +17,9 @@ const removeDups = (str) => {
     const hasValueAlreadyOccuredBefore = repeatedLetterObj[lowerCaseLetter];
 
     if (
-      !isValueEmpty &&
-      (isValueAlreadyInAcc || hasValueAlreadyOccuredBefore)
+      // !isValueEmpty &&
+      isValueAlreadyInAcc ||
+      hasValueAlreadyOccuredBefore
     ) {
       repeatedLetterObj[lowerCaseLetter] = lowerCaseLetter;
       delete acc[lowerCaseLetter];
@@ -26,7 +27,7 @@ const removeDups = (str) => {
     } else {
       return {
         ...acc,
-        [lowerCaseLetter]: item,
+        [lowerCaseLetter]: lowerCaseLetter,
       };
     }
   }, {});
@@ -36,3 +37,4 @@ const removeDups = (str) => {
 console.log(removeDups(str1)); // output should be ‘loejscrpt’
 
 console.log(removeDups(str2)); // output should be ‘he wrd’
+console.log(removeDups("An ant")); // output should be ‘ t’
