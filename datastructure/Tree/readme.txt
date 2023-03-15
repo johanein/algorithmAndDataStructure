@@ -12,7 +12,13 @@ properties of tree
     11) depth of a node : is the number of edges from the root to that node
     12) height of a node : is the number of edges from the deepest leaf to that node
     13) height of the tree : height of the root node
-    14) 
+    14) Tree can be traversed using two methods, Depth first search (DFS) and Breadth first search (BFS)
+    15) DFS can be of three types 1)Preorder 2)Inorder 3)Postorder
+            Preorder : 1)Read the data of the node 2)Visit the left subtree 3)Visit the right subtree
+            Inorder : 1)Visit the left subtree 2)Read the data of the node 3)Visit the right subtree
+            Postorder : 1)Visit the left subtree 2)Visit the right subtree 3)Read the data of the node
+    16) In BFS we explore all nodes at the present depth prior to moving on to the the nodes at the next depth level.
+    17) 
 binary tree : each node has a maximum of two nodes
 
 Binary tree properties:

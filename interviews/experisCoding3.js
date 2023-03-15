@@ -81,7 +81,7 @@ const getClients = (firmsParam) => {
 };
 
 // console.dir(firms, { depth: null });
-console.log(getClients(firms));
+// console.log(getClients(firms));
 
 // Part B. From list of clients, construct a firms array object
 // firms = [
