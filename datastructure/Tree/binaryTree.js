@@ -118,27 +118,27 @@ class BinarySearchTree {
   };
 
   deleteNode = (root, value) => {
-    if (root.value === null) {
-      return null;
+    if (root === null) {
+      return root;
     }
 
     if (value < root.value) {
-      root.left = this.deleteNode(root.left, value);
+      root.left = this.deleteNode(root.left, value); // this is for traversal
     } else if (value > root.value) {
-      root.right = this.deleteNode(root.right, value);
+      root.right = this.deleteNode(root.right, value); // this is for traversal
     } else {
       if (!root.left && !root.right) {
-        return null;
+        return null; // this is deleting
       }
       if (!root.left) {
-        return root.right;
+        return root.right; // deletes
       }
       if (!root.right) {
-        return root.left;
+        return root.left; // deletes
       }
 
       root.value = this.min(root.right);
-      root.right = this.deleteNode(root.right, root.value);
+      root.right = this.deleteNode(root.right, root.value); // deletes the min value out of right tree
     }
     return root;
   };
